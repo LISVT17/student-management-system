@@ -16,19 +16,19 @@ function addStudent(name, id, age, major) {
     if (!name || !id || !age || !major) {
         throw new Error('请填写完整的学生信息');
     }
-    
+
     // 检查学号是否已存在
     const existingStudent = students.find(student => student.id === id);
     if (existingStudent) {
         throw new Error(`学号 ${id} 已存在`);
     }
-    
+
     // 检查年龄是否为有效数字
     const ageNum = parseInt(age);
     if (isNaN(ageNum) || ageNum <= 0) {
         throw new Error('请输入有效的年龄');
     }
-    
+
     // 创建新学生对象
     const newStudent = {
         name: name,
@@ -36,10 +36,10 @@ function addStudent(name, id, age, major) {
         age: ageNum,
         major: major
     };
-    
+
     // 添加到数组
     students.push(newStudent);
-    
+
     console.log(`成功添加学生：${name}（学号：${id}）`);
     return newStudent;
 }
@@ -83,16 +83,16 @@ function displayAllStudents() {
         console.log('当前没有学生信息');
         return;
     }
-    
+
     console.log('\n所有学生信息：');
     console.log('----------------------------------------------------');
     console.log('学号\t\t姓名\t\t年龄\t\t专业');
     console.log('----------------------------------------------------');
-    
+
     students.forEach(student => {
         console.log(`${student.id}\t\t${student.name}\t\t${student.age}\t\t${student.major}`);
     });
-    
+
     console.log('----------------------------------------------------\n');
 }
 
@@ -112,15 +112,15 @@ if (require.main === module) {
         // 测试添加功能
         addStudent('张三', '20230001', 20, '计算机科学');
         addStudent('李四', '20230002', 21, '软件工程');
-        
+
         // 显示所有学生
         displayAllStudents();
-        
+
         // 这里可以测试其他功能
         // queryStudentById('20230001');
         // updateStudentById('20230001', 22, '人工智能');
         // deleteStudentById('20230002');
-        
+
     } catch (error) {
         console.error('错误:', error.message);
     }
