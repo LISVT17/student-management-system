@@ -45,14 +45,7 @@ function addStudent(student) {
  * @param {string} id - 学生学号
  * @returns {Object|null} 找到的学生对象或null
  */
-function getStudentById(id) {
-  const student = students.find(s => s.id === id);
-  if (!student) {
-    console.log('未找到该学生');
-    return null;
-  }
-  return student;
-}
+
 
 /**
  * 根据学号更新学生信息
@@ -60,46 +53,12 @@ function getStudentById(id) {
  * @param {Object} updates - 要更新的信息（age和/或major）
  * @returns {boolean} 更新成功返回true，失败返回false
  */
-function updateStudentById(id, updates) {
-  const index = students.findIndex(s => s.id === id);
-  if (index === -1) {
-    console.log('未找到该学生');
-    return false;
-  }
-
-  // 只允许更新年龄和专业
-  if (updates.age) {
-    if (isNaN(updates.age)) {
-      console.log('错误：年龄必须是数字');
-      return false;
-    }
-    students[index].age = updates.age;
-  }
-
-  if (updates.major) {
-    students[index].major = updates.major;
-  }
-
-  console.log('更新成功');
-  return true;
-}
 
 /**
  * 根据学号删除学生
  * @param {string} id - 学生学号
  * @returns {boolean} 删除成功返回true，失败返回false
  */
-function deleteStudentById(id) {
-  const index = students.findIndex(s => s.id === id);
-  if (index === -1) {
-    console.log('未找到该学生');
-    return false;
-  }
-
-  students.splice(index, 1);
-  console.log('删除成功');
-  return true;
-}
 
 /**
  * 显示学生信息
